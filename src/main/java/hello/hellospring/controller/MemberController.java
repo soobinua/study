@@ -5,7 +5,8 @@ import org.springframework.stereotype.Controller;
 
 import hello.hellospring.service.MemberService;
 
-@Controller //스프링 빈 등록
+//주로 정형화된 컨트롤러, 서비스, 리포지토리 같은 코드는 컴포넌트 스캔을 사용한다.
+@Controller //스프링 빈 등록 - 컴포넌트 스캔
 public class MemberController {
 	
 	private final MemberService memberService;
