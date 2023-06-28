@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import hello.hellospring.repository.JdbcMemberRepository;
+import hello.hellospring.repository.JdbcTemplateMemberRepository;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.service.MemberService;
 
@@ -31,6 +32,7 @@ public class SpringConfig {
 		//개방-폐쇄 원칙(OCP, Open-Closed Principle) : 확장에는 열려있고, 수정, 변경에는 닫혀있다.
 		//스프링 DI 사용하면 기존 코드 전혀 수정하지 않고 설정만으로 구현 클래스 변경 가능
 //		return new MemoryMemberRepository();
-		return new JdbcMemberRepository(dataSource);
+//		return new JdbcMemberRepository(dataSource);
+		return new JdbcTemplateMemberRepository(dataSource);
 	}
 }
