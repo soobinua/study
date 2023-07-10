@@ -1,3 +1,4 @@
+package variable;
 
 public class BadVariableName { // 나쁜 변수명
 

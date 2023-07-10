@@ -1,3 +1,4 @@
+package variable;
 
 public class VariableMartEvent02 {// 변수의 필요성
 

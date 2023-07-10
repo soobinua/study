@@ -1,3 +1,4 @@
+package variable;
 
 public class GoodVariableName { // 좋은 변수명
 
