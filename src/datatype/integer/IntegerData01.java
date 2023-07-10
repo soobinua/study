@@ -1,4 +1,4 @@
-package datatype;
+package datatype.integer;
 
 public class IntegerData01 {
 

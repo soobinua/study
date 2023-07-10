@@ -1,4 +1,4 @@
-package datatype;
+package datatype.realnumber;
 
 public class RealNumberData02 {
 

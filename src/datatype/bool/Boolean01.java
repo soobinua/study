@@ -1,4 +1,4 @@
-package datatype;
+package datatype.bool;
 
 public class Boolean01 {
 

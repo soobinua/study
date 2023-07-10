@@ -1,6 +1,6 @@
-package datatype;
+package datatype.character;
 
-public class Characters01 {
+public class Character01 {
 
 	public static void main(String[] args) {
 		// 자료형 - 문자

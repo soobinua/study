@@ -1,4 +1,4 @@
-package datatype;
+package datatype.string;
 
 public class String06 {
 

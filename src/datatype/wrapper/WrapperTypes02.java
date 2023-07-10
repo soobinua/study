@@ -1,4 +1,4 @@
-package datatype;
+package datatype.wrapper;
 
 public class WrapperTypes02 {
 
