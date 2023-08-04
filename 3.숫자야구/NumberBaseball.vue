@@ -14,7 +14,7 @@
       <!--v-for:"try in tries" try 사용불가로 t-->
       <!--값-->
       <!-- <li v-for="t in tries">{{ t }}</li> -->
-      <li v-for="t in tries">
+      <li v-for="t in tries" :key="t.try">
         <!--객체-->
         <div>{{ t.try }}</div>
         <div>{{ t.result }}</div>
