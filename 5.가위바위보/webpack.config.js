@@ -1,5 +1,3 @@
-/** @format */
-
 //node는 require, vue는 import
 //const VueLoaderPlugin = require('vue-loader/lib/plugin'); //구버전
 const { VueLoaderPlugin } = require("vue-loader"); //신버전
