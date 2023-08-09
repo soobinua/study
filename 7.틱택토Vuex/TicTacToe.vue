@@ -1,25 +1,39 @@
 <template>
   <div>
     <div>{{ turn }}님의 턴입니다.</div>
-    <!-- vuex의 computed 매번 실행되므로 컴포넌트 나눈 의미가 없어져 하나로 합치기 -->
-    <!-- vuex를 사용하지 않으면 나눈 의미가 있지만 vuex 나눈 의미가 없음 -->
-    <!-- TableComponent, TrComponent, TdComponent 필요 없음 -->
-    <table>
+    <!--자식 컴포넌트에 데이터 전달 시 아래와 같이 작성했으나 -->
+    <!-- <table-component props="abc"/> -->
+    <!--<table-component> 사이에 태그를 넘겨줄 수도 있다. </table-component>-->
+    <table-component>
+      <!--slot 자식컴포넌트에서 화면에 표시되어야할 내용을 부모에 적어줌으로써 부모 컴포넌트의 data, methods, computed 등등에 접속할 수 있는 장점이 있다.-->
+      <!-- 이렇게 작성하면 자식 컴포넌트 TableComponent의 slot 태그 부분에 렌더링된다. -->
       <tr v-for="(rowData, rowIndex) in tableData" :key="rowIndex">
         <td @click="onClickTd(rowIndex, cellIndex)" v-for="(cellData, cellIndex) in rowData" :key="cellIndex">{{ cellData }}</td>
       </tr>
-    </table>
+    </table-component>
     <div v-if="winner">{{ winner }}님의 승리!!</div>
   </div>
 </template>
 
 <script>
+// :key = 렌더링할때 화면을 다시 그릴지 말지 판단하는 기준
+// 배열에서 키를 인덱스로 하는 경우 추가, 수정일 때는 괜찮으나 삭제일 때는 불필요한 렌더링이 발생할 수 있다.
+// :key = "index"
+// [0, 1, 2, 3, 4 ,12, 7, 8, 9, 10, 13, 156]
+//  0  1  2  3  4  5    6  7  8  9  10, 11,  12
+// 배열의 값이 삭제되는 경우에는 인덱스가 바뀌기 때문에 다시 그려진다.
+// 배열의 값이 바껴도 인덱스는 같다.
+
 import { mapState } from "vuex";
 //store와 최상위 컴포넌트도 연결 필요
 import store, { CLICK_CELL, SET_WINNER, CHANGE_TURN, RESET_GAME, NO_WINNER } from "./store";
+import TableComponent from "./TableComponent";
 
 export default {
   store,
+  components: {
+    TableComponent,
+  },
   computed: {
     //mapState를 이용해 vuex의 state를 간단하게 가져올 수 있다.
     ...mapState(["winner", "turn", "tableData"]), //아래와 동일
