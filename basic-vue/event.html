@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 기초 익히기 - 이벤트</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <div><button v-on:click="alert">Click Me</button></div>
+      <div>
+        {{year}}<br>
+        <button v-on:click="plus">더하기</button>
+        <button v-on:click="minus">빼기</button>
+      </div>
+      <div>
+        <!-- 제출 이벤트가 페이지를 다시 로드 하지 않는다. -->
+        <form v-on:submit.prevent="submit">
+          <input type="text">
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // 뷰 인스턴스 생성
+      new Vue({
+        el: "#app",
+        data: {
+          year: 2023,
+        },
+        methods: {
+          alert() {
+            alert('Hello Vue.js');
+          },
+          plus() {
+            this.year ++;
+          },
+          minus() {
+            this.year --;
+          },
+          submit() {
+            alert('submitted');
+            console.log('Hi');
+          }
+        },
+      });
+    </script>
+  </body>
+</html>
