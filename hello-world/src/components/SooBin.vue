@@ -1,8 +1,10 @@
 <template>
   <div>
-    <h1>{{ title }}</h1>
-    <p>{{ name }}</p>
-    <button @click="updateName">Change Name</button>
+    <p>Header</p>
+    <slot name="header" :soo="soo"></slot>
+    <p>Body</p>
+    <slot></slot>
+    <p>Footer</p>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ export default {
   },
   data() {
     return {
+      soo: "soobin",
       // name: "SooBin",
     };
   },
