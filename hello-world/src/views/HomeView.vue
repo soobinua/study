@@ -2,22 +2,34 @@
 <template>
   <div>
     <h1>This is Home page</h1>
-    <SooBin title="home title" name="soobin"></SooBin>
+    <form action="">
+      <!--부모에서 자식이 보낸 데이터 받는 방법-->
+      <!-- <InputField :name="name" @update-name="updateName"/> -->
+      <!--아래와 같이 작성하면 methods 필요 없다.-->
+      <!-- <InputField :name="name" @update-name="name = $event.target.value" /> -->
+      <InputField v-model="name"/>
+      <br /><button>Submit</button>
+    </form>
+    {{ name }}
   </div>
 </template>
 
 <script>
-import SooBin from "@/components/SooBin.vue";
-
+import InputField from "@/components/InputField.vue";
 export default {
   components: {
-    SooBin,
+    InputField,
   },
   data() {
     return {
-      name: "SooBin",
+      name: "",
     };
   },
+  // methods: {
+  //   updateName(name) {
+  //     this.name = name;
+  //   }
+  // }
 };
 </script>
 
