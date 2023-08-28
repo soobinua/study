@@ -9,7 +9,14 @@
       @keyup.enter="addTodo"
     />
     <hr />
-    <ToDo v-for="todo in todos" :key="todo.id" :todo="todo" />
+    <ToDo
+      v-for="todo in todos"
+      :key="todo.id"
+      :todo="todo"
+      @toggle-checkbox="toggleCheckbox"
+      @click-delete="deleteTodo"
+    />
+    {{ todos }}
   </div>
 </template>
 
@@ -37,6 +44,21 @@ export default {
         checked: false,
       });
       this.todoText = "";
+    },
+    toggleCheckbox({ id, checked }) { //자식 컴포넌트에서 보낸 값
+      const index = this.todos.findIndex((todo) => {
+        return todo.id === id;
+      });
+      this.todos[index].checked = checked;
+    },
+    deleteTodo(id) {
+      // case1.
+      // const index = this.todos.findIndex((todo) => {
+      //   return todo.id === id;
+      // });
+      // this.todos.splice(index, 1);
+      // case 2.
+      this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },
 };
