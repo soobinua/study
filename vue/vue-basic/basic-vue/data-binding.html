@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 기초 익히기 - 데이터 바인딩</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 데이터 바인딩 -->
+      <div><input :type="type" :value="inputData" /></div>
+      <div><a :href="getKossieCoderLink('kossiecoder')">코지 코더 채널</a></div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          inputData: "hello",
+          type: "text",
+          link: "https://www.youtube.com/",
+        },
+        methods: {
+          getKossieCoderLink(channel) {
+            return this.link + channel;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

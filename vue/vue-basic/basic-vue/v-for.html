@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 기초 익히기 - v-for 리스트 렌더링</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>{{people[0].name}}{{people[0].age}}</div>
+      <div>{{people[1].name}}{{people[1].age}}</div>
+      <div>{{people[2].name}}{{people[2].age}}</div>
+      <div>{{people[3].name}}{{people[3].age}}</div>
+      <hr />
+
+      <!--v-for in || of 구분자 둘 다 사용 가능-->
+      <!--:key 고유한 값이어야 한다. 인덱스는 삭제하는 경우 인덱스가 변경되기 때문에 지양-->
+      <div v-for="person in people" :key="person.name">
+        {{person.name}}{{person.age}}
+      </div>
+      <hr />
+
+      <!--index 도 사용 가능-->
+      <!--:key="index"는 삭제하는 경우 인덱스가 변경되기 때문에 지양-->
+      <div v-for="(person, index) in people" :key="person.id">
+        {{person.name}}{{person.age}} {{index}}
+      </div>
+    </div>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          people: [
+            { id:1, name: "홍길동", age: 20 },
+            { id:2, name: "조두팔", age: 21 },
+            { id:3, name: "최백호", age: 22 },
+            { id:4, name: "곽철용", age: 23 },
+            { id:5, name: "강감찬", age: 24 },
+          ],
+        },
+        methods: {
+
+        },
+      });
+    </script>
+  </body>
+</html>

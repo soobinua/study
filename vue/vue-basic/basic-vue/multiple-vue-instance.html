@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>뷰 기초 익히기 - 여러개의 Vue 인스턴스 사용</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <div id="app">
+      {{name}}<br />
+      <button @click="changeText">Click</button>
+    </div>
+    <div id="app-1">
+      {{name}}<br />
+      <button @click="changeText">Click</button>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          name: "soobin",
+        },
+        methods: {
+          changeText() {
+            this.name = "soobin updated"; //this는 Vue 인스턴스를 가리킨다.
+            //app1의 데이터를 변경하고 싶다면
+            app1.name = "soobin updated"; //변수명으로 접근
+          },
+        },
+      });
+
+      const app1 = new Vue({ //vue 인스턴스를 변수로 받고
+        el: "#app-1",
+        data: {
+          name: "soobin1",
+        },
+        methods: {
+          changeText() {
+            this.name = "soobin1 updated";
+            app.name = "soobin1 updated";
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
